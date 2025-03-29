@@ -1,0 +1,27 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: white;
+    font-size: large;
+}
+button {
+    padding: 100px 200px;
+    font-size: xx-large;
+    cursor: pointer
+}
+.joke-box {
+    border: 2px solid black;
+    padding: 100px;
+    margin: 20px auto;
+    background-color: lightblue;
+    color: black;
+    font-size: x-large;
+    text-align: center;
+    width: fit-content;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
