@@ -3,9 +3,9 @@ let jokes = [];
 let currentJokeBox = null;
 
 readCSV();
-setTimeout(() => {
-    console.log("Random Joke:", get_random_joke());
-}, 1000);
+// setTimeout(() => {
+//     console.log("Random Joke:", get_random_joke());
+// }, 1000);
 
 function readCSV() {
     fetch('./shortjokes.csv')
@@ -29,7 +29,6 @@ function parseCSV(csvContent) {
             jokes.push(joke);
         }
     });
-    console.log("Jokes loaded:", jokes);
 }
 
 function button_was_clicked() {
@@ -55,13 +54,14 @@ function reset_button() {
     }
 }
 
-function another_joke_button() {
+function another_joke_button(box) {
     let button = document.getElementById('another-joke-button');
     if (!button) {
         button = document.createElement('button');
         button.innerText = 'Do you want another bad joke?';
         button.id = 'another-joke-button';
         button.className = 'another-joke-button';
+        
         button.addEventListener('click', () => {
             console.log('Another joke button clicked');
             if (currentJokeBox) {
@@ -69,20 +69,36 @@ function another_joke_button() {
             }
             joke_appears();
         });
+
         document.body.appendChild(button);
     }
+
+    box.insertAdjacentElement('afterend', button);
+}
+
+like_dislike_button() {
+    const box = document.createElement('div');  // WORKING HERE, creating the like and dislike button
+    box.className = 'like-box';
+    box.innerText = like;
+
+    document.body.appendChild(box);
+}
+
+joke_box_creation(joke) {
+    const box = document.createElement('div');
+    box.className = 'joke-box';
+    box.innerText = joke;
+
+    document.body.appendChild(box);
+
+    currentJokeBox = box;
 }
 
 function joke_appears() {
     let joke = get_random_joke();
-    const box = document.createElement('div');
-    box.className = 'joke-box';
-    box.innerText = joke;
-    document.body.appendChild(box);
-
-    currentJokeBox = box;
-
-    another_joke_button();
+    joke_box_creation(joke);
+    like_dislike_button();
+    another_joke_button(box);
 }
 
 function get_random_joke() {

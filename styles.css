@@ -27,11 +27,17 @@ button {
 }
 
 .another-joke-button {
+    display: block;
+    margin: 10px auto;
     padding: 10px 20px;
     font-size: 16px;
     background-color: lightblue;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 20px;
+}
+
+.another-joke-button:hover {
+    background-color: deepskyblue;
+    color: white;
 }
